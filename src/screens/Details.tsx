@@ -1,17 +1,20 @@
 /** @format */
 
 import axios from "axios";
-import React, { FC, useEffect, useState } from "react";
-import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
+import { ArrowBack, Navigation } from "@material-ui/icons";
+import React, { FC, useCallback, useEffect, useState } from "react";
+import { ActivityIndicator, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "../styles/screens";
 import { nasaItem } from "../types/response";
+
 import { detailsProp } from "../types/screens";
+import { useNavigation } from "@react-navigation/native";
 
 const Details: FC<detailsProp> = (props) => {
 	const [data, setData] = useState<nasaItem>();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<boolean>(false);
-
+	const navigation = useNavigation();
 	useEffect(() => {
 		setLoading(true);
 		axios
@@ -29,8 +32,22 @@ const Details: FC<detailsProp> = (props) => {
 			});
 	}, []);
 
+	
+
 	return (
 		<SafeAreaView testID="details" style={styles.container}>
+			<TouchableOpacity 
+			onPress={() => {
+				navigation.goBack()
+			}}>
+				
+			<ArrowBack
+			
+			/>
+			</TouchableOpacity>
+			<Text style={styles.head}>
+				Details
+			</Text>
 			{loading ? (
 				<ActivityIndicator color={"red"} size={20} />
 			) : error ? (

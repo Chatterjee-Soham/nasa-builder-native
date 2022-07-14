@@ -19,8 +19,19 @@ export const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	buttonsRow: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-		alignItems: "center",
+		marginTop:30,
+		
+		// flexDirection: "column",
+		// justifyContent: "center",
+		// alignItems: "center",
+	},
+	head:{
+		color: "blue", 
+		fontSize:20,
+		display:"flex",
+		justifyContent:"center",
+		alignItems:"flex-start",
+		height:"20%"
+
 	},
 });

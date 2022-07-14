@@ -51,7 +51,8 @@ const Home: FC = () => {
 				onChangeText={(text) => setText(text)}
 				style={styles.input}
 			/>
-			<View style={styles.buttonsRow}>
+			<View >
+				<View style={styles.buttonsRow}>
 				<Button
 					disabled={text.length == 0}
 					title="Submit"
@@ -59,16 +60,21 @@ const Home: FC = () => {
 						navigation.navigate("Details", { id: text });
 					}}
 				/>
+				</View>
 				{loading ? (
 					<ActivityIndicator color={"red"} size={20} />
-				) : (
-					<Button
+					
+				)
+				 : (
+					<View style={styles.buttonsRow}>
+					<Button 
+					    
 						disabled={loading}
 						title="Random Asteroid"
 						onPress={() => {
 							getRandomAsteroid();
 						}}
-					/>
+					/></View>
 				)}
 			</View>
 		</SafeAreaView>
